@@ -1,0 +1,5 @@
+#Ping-Multiple Ip single time.
+#Create variable for ping 
+$ping = New-Object System.Net.Networkinformation.Ping
+#Fix the range with filter
+1..254 | % { $ping.send(“192.168.1.$_”) | select address, status, TTL } | Where status -EQ "success"
